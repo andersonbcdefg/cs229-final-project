@@ -1,0 +1,232 @@
+?bindrows
+?bind_rows
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+?bind_rows
+t = as_tibble(c(1, 2, 3))
+t
+bind_rows(NULL, t)
+result = NULL
+for (n in 1:13) {
+result <- bind_rows(result,
+read_csv(paste0("data/IRAhandle_tweets_", n, ".csv")))
+}
+View(result)
+unique(result$account_type)
+unique(result$language)
+preprocessed <- result %>%
+filter(language == "English")
+unique(preprocessed$account_type)
+preprocessed %>% group_by(account_type) %>% count()
+preprocessed %>% filter(account_type == "Russian") %>% .[1]
+preprocessed %>% filter(account_type == "Russian") %>% .[1,]
+result %>%
+filter(account_type %in% c))
+preprocessed %>% group_by(account_category) %>% count()
+result %>% group_by(author) %>% count() %>% View()
+preprocessed <- result %>%
+filter(language == "English") %>%
+filter(account_category %in% c("Fearmonger", "HashtagGamer",
+"LeftTroll", "RightTroll", "NewsFeed")) %>%
+select(content, account_category) %>%
+add_column(., troll=T)
+preprocessed <- result %>%
+filter(language == "English") %>%
+filter(account_category %in% c("Fearmonger", "HashtagGamer",
+"LeftTroll", "RightTroll", "NewsFeed")) %>%
+select(content, account_category) %>%
+add_column(., troll=T)
+View(preprocessed)
+write_csv(preprocessed, "preprocessed-troll-tweets.csv")
+write_csv(preprocessed, "data/preprocessed-troll-tweets.csv")
+sentiment = NULL
+for (n in c("train", "test")) {
+sentiment <- bind_rows(sentiment, read_csv(paste0("data/sentiment-", n, ".csv"))
+}
+sentiment = NULL
+for (n in c("train", "test")) {
+sentiment <- bind_rows(sentiment, read_csv(paste0("data/sentiment-", n, ".csv")))
+}
+View(sentiment)
+sentiment = NULL
+for (n in c("train", "test")) {
+sentiment <- bind_rows(sentiment, read_csv(paste0("data/sentiment-", n, ".csv"),
+col_names=F))
+}
+sentiment_preprocessed <- sentiment %>%
+select(X6) %>%
+transmute(
+content=X6,
+account_type="NotTroll",
+troll=F
+)
+View(sentiment_preprocessed)
+write_csv(sentiment_preprocessed, "data/sentiment-preprocessed.csv")
+nrow(preprocessed)
+political_corpus <- read_tsv("data/political.tsv", col_names=F)
+View(political_corpus)
+pol_preprocessed <- political_corpus %>%
+select(X6) %>%
+transmute(
+content=X2,
+account_type="NotTroll",
+troll=F
+)
+pol_preprocessed <- political_corpus %>%
+select(X2) %>%
+transmute(
+content=X2,
+account_type="NotTroll",
+troll=F
+)
+write_csv(sentiment_preprocessed, "data/political-corpus-preprocessed.csv")
+View(pol_preprocessed)
+dem_rep <- read_csv("data/dem-rep-tweets")
+dem_rep <- read_csv("data/dem-rep-tweets.csv")
+dem_rep_preprocessed <- dem_rep %>%
+select(Tweet) %>%
+transmute(
+content=Tweet,
+account_type="NotTroll",
+troll=F
+)
+View(dem_rep_preprocessed)
+write_csv(dem_rep_preprocessed, "data/dem-rep-preprocessed.csv")
+write_csv(pol_preprocessed, "data/political-corpus-preprocessed.csv")
+?fromJson
+?fromJSON
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+t <- bind_rows(fromJSON("data/political-tweets.json"))
+json_file <- read_file("data/political-tweets.json") %>%
+gsub('\n', ',', trimws(.), fixed=TRUE)
+t <- bind_rows(fromJSON(json_file))
+json_file <- read_file("data/political-tweets.json") %>%
+gsub('\\}\n', ',', trimws(.), fixed=TRUE)
+t <- bind_rows(fromJSON(json_file))
+json_file <- read_file("data/political-tweets.json") %>%
+gsub('\\}\n', '\\},', trimws(.), fixed=TRUE)
+t <- bind_rows(fromJSON(json_file))
+t = tibble()
+bind_rows(t, c(1, 2, 3))
+bind_rows(t, tibble(c(1, 2, 3)))
+pol_tweets = NULL
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+pol_tweets <- bind_rows(pol_tweets, fromJSON(line))
+}
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+pol_tweets <- bind_rows(pol_tweets, fromJSON(line))
+}
+rlang::last_error()
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+pol_tweets <- bind_rows(pol_tweets, fromJSON(line))
+}
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+print(fromJSON(line))
+}
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+print(tibble(fromJSON(line)))
+}
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+print(fromJSON(line))
+}
+close(f)
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+print(fromJSON(line)$text)
+}
+close(f)
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+pol_tweets <- bind_rows(pol_tweets, fromJSON(line)$text)
+}
+close(f)
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+while (TRUE) {
+line = readLines(f, n = 1)
+if ( length(line) == 0 ) {
+break
+}
+pol_tweets <- bind_rows(pol_tweets, list(content=fromJSON(line)$text))
+}
+close(f)
+100 % 10
+mod(100, 10)
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+library(numbers)
+install.packages(number)
+install.packages(numbers)
+install.packages("numbers")
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+library(numbers)
+mod(100, 7)
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+for (i in 1:1243370) {
+if (mod(i, 10000) == 0) {print(paste0("Processed ", i, " lines."))}
+line = readLines(f, n = 1)
+pol_tweets <- bind_rows(pol_tweets, list(content=fromJSON(line)$text))
+}
+close(f)
+View(pol_tweets)
+political_big_preprocessed <- pol_tweets %>%
+transmute(
+content=content,
+account_type="NotTroll",
+troll=F
+)
+write_csv(political_big_preprocessed, "data/big-political-preprocessed.csv")
+View(political_big_preprocessed)

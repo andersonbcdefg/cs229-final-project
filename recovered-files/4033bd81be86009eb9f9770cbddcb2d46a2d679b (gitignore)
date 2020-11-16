@@ -1,0 +1,6 @@
+*.csv
+*.tsv
+*.json
+*.pdf
+*.png
+*.pickle

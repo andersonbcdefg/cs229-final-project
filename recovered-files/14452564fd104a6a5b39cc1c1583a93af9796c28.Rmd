@@ -1,0 +1,134 @@
+---
+title: "preprocess-tweets"
+author: "Ben Anderson"
+date: "10/22/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(jsonlite)
+library(numbers)
+```
+
+### Read in troll tweets
+```{r}
+result = NULL
+for (n in 1:13) {
+  result <- bind_rows(result,
+                      read_csv(paste0("data/IRAhandle_tweets_", n, ".csv")))
+}
+```
+
+### Preprocess troll tweets
+```{r}
+preprocessed <- result %>% 
+  filter(language == "English") %>% 
+  filter(account_category %in% c("Fearmonger", "HashtagGamer", 
+                                 "LeftTroll", "RightTroll", "NewsFeed")) %>% 
+  select(content, account_category) %>% 
+  add_column(., troll=T)
+```
+
+### Save CSV
+```{r}
+write_csv(preprocessed, "data/preprocessed-troll-tweets.csv")
+```
+
+### Read in sentiment tweets
+```{r}
+sentiment = NULL
+for (n in c("train", "test")) {
+  sentiment <- bind_rows(sentiment, read_csv(paste0("data/sentiment-", n, ".csv"), 
+                                             col_names=F))
+}
+```
+
+### Preprocess sentiment tweets
+```{r}
+sentiment_preprocessed <- sentiment %>% 
+  select(X6) %>%
+  transmute(
+    content=X6,
+    account_type="NotTroll",
+    troll=F
+  )
+```
+
+### Save CSV
+```{r}
+write_csv(sentiment_preprocessed, "data/sentiment-preprocessed.csv")
+```
+
+### Read political corpus
+```{r}
+political_corpus <- read_tsv("data/political.tsv", col_names=F)
+```
+
+### Preprocess it
+```{r}
+pol_preprocessed <- political_corpus %>% 
+  select(X2) %>%
+  transmute(
+    content=X2,
+    account_type="NotTroll",
+    troll=F
+  )
+```
+
+### Save CSV
+```{r}
+write_csv(pol_preprocessed, "data/political-corpus-preprocessed.csv")
+```
+
+### Read Democrat-Republican Tweets
+```{r}
+dem_rep <- read_csv("data/dem-rep-tweets.csv")
+```
+
+### Preprocess it
+```{r}
+dem_rep_preprocessed <- dem_rep %>% 
+  select(Tweet) %>%
+  transmute(
+    content=Tweet,
+    account_type="NotTroll",
+    troll=F
+  )
+```
+
+### Save CSV
+```{r}
+write_csv(dem_rep_preprocessed, "data/dem-rep-preprocessed.csv")
+```
+
+
+### Political Tweets
+```{r}
+pol_tweets = tibble()
+f <- file("data/political-tweets.json", "r")
+for (i in 1:1243370) {
+  if (mod(i, 10000) == 0) {print(paste0("Processed ", i, " lines."))}
+  line = readLines(f, n = 1)
+  pol_tweets <- bind_rows(pol_tweets, list(content=fromJSON(line)$text))
+}
+close(f)
+```
+
+### Preprocess
+```{r}
+political_big_preprocessed <- pol_tweets %>% 
+  transmute(
+    content=content,
+    account_type="NotTroll",
+    troll=F
+  )
+```
+
+### Save CSV
+```{r}
+write_csv(political_big_preprocessed, "data/big-political-preprocessed.csv")
+```
