@@ -1,0 +1,32 @@
+{
+    "id": "0D4E6638",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603430881085.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "pol_tweets",
+        "caption": "pol_tweets",
+        "totalObservations": 1243370,
+        "displayedObservations": 1243370,
+        "variables": 1,
+        "cacheKey": "16F45DFC",
+        "object": "pol_tweets",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=pol_tweets&cache_key=16F45DFC&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 8390322045806929252,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603430881085,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,32 @@
+{
+    "id": "BF50F36E",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603421006787.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "expression": "dem_rep_preprocessed",
+        "caption": "dem_rep_preprocessed",
+        "totalObservations": 86460,
+        "displayedObservations": 86460,
+        "variables": 3,
+        "cacheKey": "92F62ACE",
+        "object": "dem_rep_preprocessed",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=dem_rep_preprocessed&cache_key=92F62ACE&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603421006787,
+    "read_only": false,
+    "read_only_alternatives": []
+}

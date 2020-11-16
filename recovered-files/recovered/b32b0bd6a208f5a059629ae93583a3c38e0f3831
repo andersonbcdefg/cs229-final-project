@@ -1,0 +1,32 @@
+{
+    "id": "BEF6F131",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603420661433.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "expression": "pol_preprocessed",
+        "caption": "pol_preprocessed",
+        "totalObservations": 2004,
+        "displayedObservations": 2004,
+        "variables": 3,
+        "cacheKey": "374008AF",
+        "object": "pol_preprocessed",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=pol_preprocessed&cache_key=374008AF&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140181640687616,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603420661433,
+    "read_only": false,
+    "read_only_alternatives": []
+}

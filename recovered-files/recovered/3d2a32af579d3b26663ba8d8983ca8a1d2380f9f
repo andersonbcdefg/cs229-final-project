@@ -1,0 +1,32 @@
+{
+    "id": "8F1B35E1",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1603430993538.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "expression": "political_big_preprocessed",
+        "caption": "political_big_preprocessed",
+        "totalObservations": 1243370,
+        "displayedObservations": 1243370,
+        "variables": 3,
+        "cacheKey": "0B56E591",
+        "object": "political_big_preprocessed",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=political_big_preprocessed&cache_key=0B56E591&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 140178679369284,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1603430993538,
+    "read_only": false,
+    "read_only_alternatives": []
+}
